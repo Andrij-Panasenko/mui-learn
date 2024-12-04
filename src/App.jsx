@@ -1,10 +1,11 @@
 import style from './app.module.css';
 import { useState } from 'react';
+import { useFormControl } from '@mui/material/FormControl';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Grid2 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import ProviderTheme from './components/ProviderTheme';
 
 export default function App() {
@@ -12,77 +13,68 @@ export default function App() {
   return (
     <>
       <ProviderTheme>
-        <Container fixed maxWidth="lg">
-          <Box component="form" autoComplete="off" className={style.form}>
-            <Grid2
-              container
-              spacing={{ mobile: 1, tablet: 2, laptop: 3 }}
-              direction="column"
+        <Container fixed maxWidth="md">
+          <Box
+            component="form"
+            autoComplete="off"
+            sx={{ border: '1px solid red' }}
+          >
+            <Grid
+              container={true}
+              spacing={3}
+              columns={12}
+              alignItems={'center'}
+              justifyContent={'center'}
+              sx={{ padding: '10px' }}
             >
-              <Grid2
-                item="true"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
+              <Grid item xs={12} md={6}>
                 <TextField
+                  fullWidth
                   required
                   error={isError}
-                  // helperText="Enter your name"
                   id="name"
                   label="Name"
                   placeholder="e.g., John Doe"
                 />
-              </Grid2>
+              </Grid>
 
-              <Grid2
-                item="true"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
+              <Grid item xs={12} md={6}>
                 <TextField
+                  fullWidth
                   required
                   error={isError}
-                  // helperText="Enter your email"
                   id="email"
                   label="Email"
                   placeholder="Your email"
                 />
-              </Grid2>
-              <Grid2
-                item="true"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
+              </Grid>
+
+              <Grid item xs={12}>
                 <TextField
+                  fullWidth
                   error={isError}
                   id="phone"
                   label="Phone number"
                   placeholder="Your phone number"
                 />
-              </Grid2>
-              <Grid2
-                item="true"
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-              >
+              </Grid>
+
+              <Grid item xs={12}>
                 <TextField
+                  fullWidth
                   error={isError}
                   id="address"
                   label="Address"
                   placeholder="Your phone address"
                 />
-              </Grid2>
+              </Grid>
 
-              {/* <Grid2 item>
-              <Button type="submit" variant="contained">
-                Submit form
-              </Button>
-            </Grid2> */}
-            </Grid2>
+              {/* <Grid>
+                <Button type="submit" variant="contained">
+                  Submit form
+                </Button>
+              </Grid> */}
+            </Grid>
           </Box>
         </Container>
       </ProviderTheme>
