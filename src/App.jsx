@@ -1,4 +1,3 @@
-import style from './app.module.css';
 import { useState } from 'react';
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
@@ -9,7 +8,7 @@ import ProviderTheme from './components/ProviderTheme';
 
 export default function App() {
   const [isError, setIsError] = useState(false);
-  const [formValues, setFormValues] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
@@ -19,7 +18,7 @@ export default function App() {
   const handleChange = (e) => {
     const { id, value } = e.target;
 
-    setFormValues((prevData) => ({
+    setFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
@@ -28,11 +27,11 @@ export default function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formValues.name || !formValues.email) {
+    if (!formData.name || !formData.email) {
       setIsError(true);
     } else {
       setIsError(false);
-      console.log('Form data:', formValues);
+      console.log('Form data:', formData);
     }
   };
 
@@ -68,7 +67,7 @@ export default function App() {
                   id="name"
                   label="Name"
                   placeholder="e.g., John Doe"
-                  value={formValues.name}
+                  value={formData.name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -82,7 +81,7 @@ export default function App() {
                   id="email"
                   label="Email"
                   placeholder="Your email"
-                  value={formValues.email}
+                  value={formData.email}
                   onChange={handleChange}
                 />
               </Grid>
@@ -94,7 +93,7 @@ export default function App() {
                   helperText=" "
                   label="Phone number"
                   placeholder="Your phone number"
-                  value={formValues.phone}
+                  value={formData.phone}
                   onChange={handleChange}
                 />
               </Grid>
@@ -106,7 +105,7 @@ export default function App() {
                   id="address"
                   label="Address"
                   placeholder="Your phone address"
-                  value={formValues.address}
+                  value={formData.address}
                   onChange={handleChange}
                 />
               </Grid>
